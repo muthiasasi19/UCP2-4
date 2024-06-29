@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=|Roboto+Sans:400,700|Playfair+Display:400,700">
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="css/jquery.timepicker.css">
+<link rel="stylesheet" href="css/fancybox.min.css">
+
+<link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
+<link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
+
+<!-- Theme Style -->
+<link rel="stylesheet" href="css/style.css">
+<title>Login</title>
+</head>
+
+<body class="bg-light">
+<div class="container my-5">
+<div class="row d-flex justify-content-center">
+<div class="col-sm-12 col-lg-8">
+<div class="card card-body shadow-sm">
+<center class="mb-4">
+<h4>Login</h4>
+</center>
+<div class="row d-flex justify-content-center">
+<div class="col-sm-12 col-lg-7 mb-4">
+<form id="loginForm" onsubmit="return validateLogin()">
+<input type="text" id="username" name="username" class="form-control mb-2" placeholder="Username">
+<small id="usernameError" class="text-danger d-none">Username harus diisi.</small>
+<input type="password" id="password" name="password" class="form-control mb-2" placeholder="Password">
+<small id="passwordError" class="text-danger d-none">Password harus diisi dengan kombinasi huruf besar, huruf kecil, dan angka sejumlah 8 karakter.</small>
+<button type="submit" class="btn bg-website text-white btn-block mb-3">Login</button>
+</form>
+<a href="registrasi.html" class="float-right">Belum punya akun?</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+function validateLogin() {
+var username = document.getElementById("username").value;
+var password = document.getElementById("password").value;
+var usernameError = document.getElementById("usernameError");
+var passwordError = document.getElementById("passwordError");
+
+// Check if username and password are not empty
+if (username.trim() === "") {
+usernameError.classList.remove("d-none");
+} else {
+usernameError.classList.add("d-none");
+}
+
+if (password.trim() === "") {
+passwordError.classList.remove("d-none");
+passwordError.textContent = "Password harus diisi dengan kombinasi huruf besar, huruf kecil, dan angka sejumlah 8 karakter.";
+} else {
+passwordError.classList.add("d-none");
+}
+
+if (username.trim() === "" || password.trim() === "") {
+return false;
+}
+
+// Simulate login validation
+// Assuming the password must be 8 characters with at least one uppercase letter, one lowercase letter, and one number
+var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+if (passwordPattern.test(password)) {
+alert("Login berhasil!");
+window.location.href = "/index.html"; // Redirect to the main page
+return false;
+} else {
+passwordError.classList.remove("d-none");
+passwordError.textContent = "Password harus diisi dengan kombinasi huruf besar, huruf kecil, dan angka sejumlah 8 karakter.";
+return false;
+}
+}
+
+function checkInput() {
+var username = document.getElementById("username").value;
+var password = document.getElementById("password").value;
+var usernameError = document.getElementById("usernameError");
+var passwordError = document.getElementById("passwordError");
+
+if (username.trim() === "") {
+usernameError.classList.remove("d-none");
+} else {
+usernameError.classList.add("d-none");
+}
+
+if (password.trim() === "") {
+passwordError.classList.remove("d-none");
+passwordError.textContent = "Password harus diisi dengan kombinasi huruf besar, huruf kecil, dan angka sejumlah 8 karakter.";
+} else {
+passwordError.classList.add("d-none");
+}
+}
+
+document.getElementById("username").addEventListener("input", checkInput);
+document.getElementById("password").addEventListener("input", checkInput);
+</script>
+
+<script src="assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
